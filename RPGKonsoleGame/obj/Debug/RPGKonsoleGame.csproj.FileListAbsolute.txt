@@ -1,0 +1,7 @@
+C:\Users\grzes\Desktop\Gra-Konsolowa-RPG\RPGKonsoleGame\bin\Debug\RPGKonsoleGame.exe.config
+C:\Users\grzes\Desktop\Gra-Konsolowa-RPG\RPGKonsoleGame\bin\Debug\RPGKonsoleGame.exe
+C:\Users\grzes\Desktop\Gra-Konsolowa-RPG\RPGKonsoleGame\bin\Debug\RPGKonsoleGame.pdb
+C:\Users\grzes\Desktop\Gra-Konsolowa-RPG\RPGKonsoleGame\obj\Debug\RPGKonsoleGame.csproj.AssemblyReference.cache
+C:\Users\grzes\Desktop\Gra-Konsolowa-RPG\RPGKonsoleGame\obj\Debug\RPGKonsoleGame.csproj.CoreCompileInputs.cache
+C:\Users\grzes\Desktop\Gra-Konsolowa-RPG\RPGKonsoleGame\obj\Debug\RPGKonsoleGame.exe
+C:\Users\grzes\Desktop\Gra-Konsolowa-RPG\RPGKonsoleGame\obj\Debug\RPGKonsoleGame.pdb
