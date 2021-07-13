@@ -54,8 +54,23 @@ namespace RPGKonsoleGame
                     Console.WriteLine("Dzięki za grę");
                     return;
                 }
-                MenuGry();
+                
+                while (opcja != "5")
+                {
+                    MenuGry();
+                    opcja = Console.ReadLine();
+                    if(opcja == "1")
+                    {
+                        IdzNaWyprawe();
+                    }
+                    else if(opcja == "2")
+                    {
+                        Odpocznij();
+                    }
+                }
+
             }
+
 
             //static
             void MenuGry()
@@ -124,6 +139,11 @@ namespace RPGKonsoleGame
                     return false;
                 }
                 return true;
+            }
+            //static 
+                void Odpocznij()
+            {
+
             }
         }
     }
