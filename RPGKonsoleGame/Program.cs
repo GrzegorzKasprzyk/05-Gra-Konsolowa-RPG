@@ -58,8 +58,14 @@ namespace RPGKonsoleGame
                 while (opcja != "5")
                 {
                     MenuGry();
+
                     opcja = Console.ReadLine();
-                    if(opcja == "1")
+                    if (opcja == "0")
+                    {
+                        PokazPostac();
+                    }
+
+                    if (opcja == "1")
                     {
                         IdzNaWyprawe();
                     }
@@ -88,6 +94,7 @@ namespace RPGKonsoleGame
             void MenuGry()
             {
                 Console.Clear();
+                Console.WriteLine("0. Zobacz postać");
                 Console.WriteLine("1. Idź na wyprawę");
                 Console.WriteLine("2. Odpocznij");
                 Console.WriteLine("3. Ekwipunek");
@@ -102,6 +109,12 @@ namespace RPGKonsoleGame
                 if (liczba1 < liczba2)
                     return liczba2;
                 return liczba1;
+            }
+
+            //static
+            void PokazPostac()
+            {
+
             }
 
             //static 
@@ -154,7 +167,15 @@ namespace RPGKonsoleGame
                 while (PozostaleZycie > 0)
             
                 {
-                     int ObrazenaZadane - losuj.Next(2, 3);
+                     int obrazeniaZadane - losuj.Next(2, 3);
+                    ZyciePrzeciwnika = obrazeniaZadane;
+                    if (ZyciePrzeciwnika <= 0)
+                        return true;
+
+                    int obrazeniaOtrzymane = losuj.Next(0, 4);
+                    PozostaleZycie = obrazeniaOtrzymane;
+
+
                 }
                 return true;
             }
