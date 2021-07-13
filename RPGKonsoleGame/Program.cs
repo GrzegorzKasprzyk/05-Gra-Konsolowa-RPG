@@ -11,6 +11,8 @@ namespace RPGKonsoleGame
         private static string nazwaPostaci;
         private static int PozostaleZycie;
         private static int MaksymalneZycie;
+        private static int lvl;
+
         static void Main(string[] args)
         {
             {
@@ -65,7 +67,7 @@ namespace RPGKonsoleGame
                         PokazPostac();
                     }
 
-                    if (opcja == "1")
+                    else if (opcja == "1")
                     {
                         IdzNaWyprawe();
                     }
@@ -114,7 +116,8 @@ namespace RPGKonsoleGame
             //static
             void PokazPostac()
             {
-
+                Console.WriteLine(nazwaPostaci + " lvl:" + lvl);
+                Console.WriteLine("Życie: " + PozostaleZycie + "/" + MaksymalneZycie);
             }
 
             //static 
@@ -123,6 +126,8 @@ namespace RPGKonsoleGame
                 Console.Clear();
                 Console.Write("Podaj imię postaci: ");
                 nazwaPostaci = Console.ReadLine();
+                lvl = 1;
+                PozostaleZycie = MaksymalneZycie = 10;
             }
 
             //static 
