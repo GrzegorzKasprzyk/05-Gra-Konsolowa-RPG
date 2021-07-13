@@ -67,6 +67,18 @@ namespace RPGKonsoleGame
                     {
                         Odpocznij();
                     }
+                    else if(opcja == "3")
+                    {
+                        Console.WriteLine("Opcja chwilowo niedostępna");
+                    }
+                    else if (opcja == "4")
+                    {
+                        Console.WriteLine("Opcja chwilowo niedostępna");
+                    }
+
+                    Console.WriteLine("Naciśnij enter, aby kontynuować");
+                    Console.ReadLine();
+
                 }
 
             }
