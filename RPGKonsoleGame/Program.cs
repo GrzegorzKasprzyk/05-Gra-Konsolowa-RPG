@@ -18,7 +18,7 @@ namespace RPGKonsoleGame
                  nazwaPostaci = "Błyszczący Andrzej";
                 int liczba = DajWieksza(5, 7);
                 ObsługaMenu();
-                Console.ReadLine();
+                
 
             }
            
@@ -144,18 +144,30 @@ namespace RPGKonsoleGame
             }
             //static 
                 bool Walka()
-
             {
-                if(PozostaleZycie <= 0)
+                
+                Random losuj = new Random();
+                int ZyciePrzeciwnika = losuj.Next(8,12);
+
+
+
+                while (PozostaleZycie > 0)
+            
                 {
-                    return false;
+                     int ObrazenaZadane - losuj.Next(2, 3);
                 }
                 return true;
             }
             //static 
                 void Odpocznij()
             {
+                Console.WriteLine("Rozbiłeś szałas. Chyba nic Cię nie zje, więc ucinasz sobie drzemkę");
 
+                PozostaleZycie++;
+                if(MaksymalneZycie < PozostaleZycie)
+                {
+                    PozostaleZycie = MaksymalneZycie;
+                }
             }
         }
     }
