@@ -146,6 +146,7 @@ namespace RPGKonsoleGame
                 else
                 {
                     Przegrana();
+                    Console.WriteLine("Loser...Dostałeś po dupie. Na pocieszenie zostało Ci 1 HP...");
                 }
 
             }
