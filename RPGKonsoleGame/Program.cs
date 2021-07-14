@@ -11,6 +11,8 @@ namespace RPGKonsoleGame
         private static string nazwaPostaci;
         private static int PozostaleZycie;
         private static int MaksymalneZycie;
+        private static int lvl;
+
         static void Main(string[] args)
         {
             {
@@ -18,7 +20,7 @@ namespace RPGKonsoleGame
                  nazwaPostaci = "Błyszczący Andrzej";
                 int liczba = DajWieksza(5, 7);
                 ObsługaMenu();
-                Console.ReadLine();
+                
 
             }
            
@@ -58,8 +60,14 @@ namespace RPGKonsoleGame
                 while (opcja != "5")
                 {
                     MenuGry();
+
                     opcja = Console.ReadLine();
-                    if(opcja == "1")
+                    if (opcja == "0")
+                    {
+                        PokazPostac();
+                    }
+
+                    else if (opcja == "1")
                     {
                         IdzNaWyprawe();
                     }
@@ -88,6 +96,7 @@ namespace RPGKonsoleGame
             void MenuGry()
             {
                 Console.Clear();
+                Console.WriteLine("0. Zobacz postać");
                 Console.WriteLine("1. Idź na wyprawę");
                 Console.WriteLine("2. Odpocznij");
                 Console.WriteLine("3. Ekwipunek");
@@ -104,12 +113,21 @@ namespace RPGKonsoleGame
                 return liczba1;
             }
 
+            //static
+            void PokazPostac()
+            {
+                Console.WriteLine(nazwaPostaci + " lvl:" + lvl);
+                Console.WriteLine("Życie: " + PozostaleZycie + "/" + MaksymalneZycie);
+            }
+
             //static 
                 void StworzPostac()
             {
                 Console.Clear();
                 Console.Write("Podaj imię postaci: ");
                 nazwaPostaci = Console.ReadLine();
+                lvl = 1;
+                PozostaleZycie = MaksymalneZycie = 10;
             }
 
             //static 
@@ -128,6 +146,7 @@ namespace RPGKonsoleGame
                 else
                 {
                     Przegrana();
+                    Console.WriteLine("Loser...Dostałeś po dupie. Na pocieszenie zostało Ci 1 HP...");
                 }
 
             }
@@ -144,18 +163,38 @@ namespace RPGKonsoleGame
             }
             //static 
                 bool Walka()
-
             {
-                if(PozostaleZycie <= 0)
+                
+                Random losuj = new Random();
+                int ZyciePrzeciwnika = losuj.Next(8,12);
+
+
+
+                while (PozostaleZycie > 0)
+            
                 {
-                    return false;
+                     int obrazeniaZadane - losuj.Next(2, 3);
+                    ZyciePrzeciwnika = obrazeniaZadane;
+                    if (ZyciePrzeciwnika <= 0)
+                        return true;
+
+                    int obrazeniaOtrzymane = losuj.Next(0, 4);
+                    PozostaleZycie = obrazeniaOtrzymane;
+
+
                 }
                 return true;
             }
             //static 
                 void Odpocznij()
             {
+                Console.WriteLine("Rozbiłeś szałas. Chyba nic Cię nie zje, więc ucinasz sobie drzemkę");
 
+                PozostaleZycie++;
+                if(MaksymalneZycie < PozostaleZycie)
+                {
+                    PozostaleZycie = MaksymalneZycie;
+                }
             }
         }
     }
