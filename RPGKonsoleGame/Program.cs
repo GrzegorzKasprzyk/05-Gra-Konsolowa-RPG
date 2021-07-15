@@ -27,16 +27,14 @@ namespace RPGKonsoleGame
             
             //static 
                 void ObsługaMenu()
-            {
-                Console.WriteLine("Dokonaj wyboru...");
-
-                
+            { 
+                Console.WriteLine("Dokonaj wyboru...");                
                 Console.WriteLine("\n1. Nowa Gra");
                 Console.WriteLine("2. Wczytaj Grę");
                 Console.WriteLine("3. Koniec");
 
                 string opcja = Console.ReadLine();
-                Console.WriteLine("Wybrano opcję: " + opcja);
+                //Console.WriteLine("Wybrano opcję: " + opcja);
 
                 if (opcja == "1")
                 {
@@ -116,7 +114,7 @@ namespace RPGKonsoleGame
             //static
             void PokazPostac()
             {
-                Console.WriteLine(nazwaPostaci + " lvl:" + lvl);
+                Console.WriteLine(nazwaPostaci + " Lvl:" + lvl);
                 Console.WriteLine("Życie: " + PozostaleZycie + "/" + MaksymalneZycie);
             }
 
@@ -127,7 +125,7 @@ namespace RPGKonsoleGame
                 Console.Write("Podaj imię postaci: ");
                 nazwaPostaci = Console.ReadLine();
                 lvl = 1;
-                PozostaleZycie = MaksymalneZycie = 10;
+                MaksymalneZycie = PozostaleZycie = 10;
             }
 
             //static 
@@ -146,7 +144,7 @@ namespace RPGKonsoleGame
                 else
                 {
                     Przegrana();
-                    Console.WriteLine("Loser...Dostałeś po dupie. Na pocieszenie zostało Ci 1 HP...");
+                    
                 }
 
             }
@@ -160,6 +158,7 @@ namespace RPGKonsoleGame
             void Przegrana()
             {
                 PozostaleZycie = 1;
+                Console.WriteLine("Loser...Dostałeś po dupie. Na pocieszenie zostało Ci 1 HP...");
             }
             //static 
                 bool Walka()
@@ -170,18 +169,17 @@ namespace RPGKonsoleGame
 
 
 
-                while (PozostaleZycie > 0)
+                while (PozostaleZycie > 0) 
             
                 {
-                     int obrazeniaZadane - losuj.Next(2, 3);
-                    ZyciePrzeciwnika = obrazeniaZadane;
+                     int obrazeniaZadane = losuj.Next(2, 3);
+                    ZyciePrzeciwnika -= obrazeniaZadane;
+
                     if (ZyciePrzeciwnika <= 0)
                         return true;
 
                     int obrazeniaOtrzymane = losuj.Next(0, 4);
-                    PozostaleZycie = obrazeniaOtrzymane;
-
-
+                    PozostaleZycie -= obrazeniaOtrzymane;
                 }
                 return true;
             }
@@ -192,9 +190,8 @@ namespace RPGKonsoleGame
 
                 PozostaleZycie++;
                 if(MaksymalneZycie < PozostaleZycie)
-                {
                     PozostaleZycie = MaksymalneZycie;
-                }
+                
             }
         }
     }
