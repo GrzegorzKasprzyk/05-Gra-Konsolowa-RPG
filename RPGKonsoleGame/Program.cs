@@ -8,17 +8,13 @@ namespace RPGKonsoleGame
 {
     class Program
     {
-        private static string nazwaPostaci;
-        private static int PozostaleZycie;
-        private static int MaksymalneZycie;
-        private static int lvl;
+        private static Bohater _bohater;
+        
 
         static void Main(string[] args)
         {
             {
 
-                 nazwaPostaci = "Błyszczący Andrzej";
-                int liczba = DajWieksza(5, 7);
                 ObsługaMenu();
                 
 
@@ -62,7 +58,7 @@ namespace RPGKonsoleGame
                     opcja = Console.ReadLine();
                     if (opcja == "0")
                     {
-                        PokazPostac();
+                        _bohater.PokazPostac();
                     }
 
                     else if (opcja == "1")
@@ -71,7 +67,7 @@ namespace RPGKonsoleGame
                     }
                     else if(opcja == "2")
                     {
-                        Odpocznij();
+                        _bohater.Odpocznij();
                     }
                     else if(opcja == "3")
                     {
@@ -81,7 +77,7 @@ namespace RPGKonsoleGame
                     {
                         Console.WriteLine("Opcja chwilowo niedostępna");
                     }
-
+                    _bohater.Przegrana();
                     Console.WriteLine("Naciśnij enter, aby kontynuować");
                     Console.ReadLine();
 
@@ -100,6 +96,7 @@ namespace RPGKonsoleGame
                 Console.WriteLine("3. Ekwipunek");
                 Console.WriteLine("4. Sklep");
                 Console.WriteLine("5. Koniec");
+                
 
             }
 
@@ -111,21 +108,17 @@ namespace RPGKonsoleGame
                 return liczba1;
             }
 
-            //static
-            void PokazPostac()
-            {
-                Console.WriteLine(nazwaPostaci + " Lvl:" + lvl);
-                Console.WriteLine("Życie: " + PozostaleZycie + "/" + MaksymalneZycie);
-            }
-
             //static 
-                void StworzPostac()
+            void StworzPostac()
             {
                 Console.Clear();
                 Console.Write("Podaj imię postaci: ");
-                nazwaPostaci = Console.ReadLine();
-                lvl = 1;
-                MaksymalneZycie = PozostaleZycie = 10;
+                string imie = Console.ReadLine();
+                _bohater = new Bohater(imie);
+
+                _bohater.Imie = Console.ReadLine();
+               // _bohater.Level = 1;
+               // _bohater.MaksymalneZycie = _bohater.PosiadaneZycie = 10;
             }
 
             //static 
@@ -141,11 +134,8 @@ namespace RPGKonsoleGame
                     BonusyZaZwyciestwo();
 
                 }
-                else
-                {
-                    Przegrana();
-                    
-                }
+                
+               
 
             }
             //static
@@ -154,12 +144,7 @@ namespace RPGKonsoleGame
 
             }
 
-            //static 
-            void Przegrana()
-            {
-                PozostaleZycie = 1;
-                Console.WriteLine("Loser...Dostałeś po dupie. Na pocieszenie zostało Ci 1 HP...");
-            }
+            
             //static 
                 bool Walka()
             {
@@ -169,7 +154,7 @@ namespace RPGKonsoleGame
 
 
 
-                while (PozostaleZycie > 0) 
+                while (_bohater.PosiadaneZycie > 0) 
             
                 {
                      int obrazeniaZadane = losuj.Next(2, 3);
@@ -179,20 +164,12 @@ namespace RPGKonsoleGame
                         return true;
 
                     int obrazeniaOtrzymane = losuj.Next(0, 4);
-                    PozostaleZycie -= obrazeniaOtrzymane;
+                    _bohater.PosiadaneZycie -= obrazeniaOtrzymane;
                 }
                 return true;
-            }
-            //static 
-                void Odpocznij()
-            {
-                Console.WriteLine("Rozbiłeś szałas. Chyba nic Cię nie zje, więc ucinasz sobie drzemkę");
 
-                PozostaleZycie++;
-                if(MaksymalneZycie < PozostaleZycie)
-                    PozostaleZycie = MaksymalneZycie;
-                
             }
+            
         }
     }
 }
