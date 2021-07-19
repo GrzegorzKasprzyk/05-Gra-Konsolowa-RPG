@@ -14,6 +14,8 @@ namespace RPGKonsoleGame
         public int Obrazenia { get; set; }
         public int Level { get; set; }
         public int PunktyDoswiadczenia { get; set; }
+        public int Sakwa { get; set; }
+        public Broń NoszonaBron { get; private set; }
 
         public Bohater(string imie)
         {
@@ -22,6 +24,7 @@ namespace RPGKonsoleGame
             PosiadaneZycie = 10;
             Level = 1;
             PunktyDoswiadczenia = 0;
+            Sakwa = 10;
         }
 
         //static 
@@ -46,10 +49,25 @@ namespace RPGKonsoleGame
             //static
             public void PokazPostac()
             {
-                Console.WriteLine(Imie + " Lvl:" + Level);
+                Console.WriteLine(Imie + " Lvl: " + Level);
                 Console.WriteLine("Życie: " + PosiadaneZycie + "/" + MaksymalneZycie);
+                Console.WriteLine("Sakwa: " + Sakwa + "golda");
+                if(NoszonaBron != null)
+                Console.WriteLine(NoszonaBron.Nazwa + "   obrażenia" + NoszonaBron.ModyfikatorObrazen);
             }
-
+            public void KupBron(Broń broń)
+            {
+                if(broń.Cena <= Sakwa)
+                {
+                    Sakwa -= broń.Cena;
+                    NoszonaBron = broń;
+                    Console.WriteLine("Od teraz dzierżysz" + broń.Nazwa);
+                }
+                else 
+                {
+                    Console.WriteLine("Nie stać Cię bidoku");
+                }
+            }
         }
     }
 }
