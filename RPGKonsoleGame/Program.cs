@@ -20,10 +20,10 @@ namespace RPGKonsoleGame
             }
 
             //static 
-                void StworzBronie()
+            void StworzBronie()
             {
                 List<Broń> bronie = new List<Broń>();
-                Broń broń = new Broń("Wrzeszczący kijaszek", 3,4);
+                Broń broń = new Broń("Wrzeszczący kijaszek", 3, 4);
                 bronie.Add(broń);
                 bronie.Add(new Broń("Magiczny Róg", 10, 6));
                 bronie.Add(new Broń("Badyl", 1, 100));
@@ -85,7 +85,7 @@ namespace RPGKonsoleGame
                     }
                     else if (opcja == "4")
                     {
-                        Console.WriteLine("Opcja chwilowo niedostępna");
+                        Sklep();
                     }
                     _bohater.Przegrana();
                     Console.WriteLine("Naciśnij enter, aby kontynuować");
@@ -177,6 +177,33 @@ namespace RPGKonsoleGame
                     _bohater.PosiadaneZycie -= obrazeniaOtrzymane;
                 }
                 return true;
+
+            }
+            //static 
+            void Sklep()
+            {
+                Console.Clear();
+                int licznik = 1;
+
+                foreach (Broń broń in bronie)
+                {
+                    Console.WriteLine(licznik + ". " + broń.Nazwa);
+                    licznik++;
+                }
+
+                /*
+                for (int nrBroni = 0 ; nrBroni < bronie.Count;nrBroni++)
+                {
+                    Console.WriteLine((nrBroni + 1) + ". " + bronie[nrBroni].Nazwa);
+                }
+                */
+
+                Console.WriteLine("Wybierz broń: ");
+                string odczyt = Console.ReadLine();
+                int opcja = int.Parse(odczyt);
+
+                Broń wybranaBron = bronie[opcja - 1];
+                _bohater.KupBron(wybranaBron);
 
             }
 
