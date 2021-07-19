@@ -9,22 +9,31 @@ namespace RPGKonsoleGame
     class Program
     {
         private static Bohater _bohater;
-        
+        private static List<Broń> bronie;
+
 
         static void Main(string[] args)
         {
             {
-
+                StworzBronie();
                 ObsługaMenu();
-                
+            }
+
+            //static 
+            void StworzBronie()
+            {
+                List<Broń> bronie = new List<Broń>();
+                Broń broń = new Broń("Wrzeszczący kijaszek", 3, 4);
+                bronie.Add(broń);
+                bronie.Add(new Broń("Magiczny Róg", 10, 6));
+                bronie.Add(new Broń("Badyl", 1, 100));
 
             }
-           
-            
+
             //static 
-                void ObsługaMenu()
-            { 
-                Console.WriteLine("Dokonaj wyboru...");                
+            void ObsługaMenu()
+            {
+                Console.WriteLine("Dokonaj wyboru...");
                 Console.WriteLine("\n1. Nowa Gra");
                 Console.WriteLine("2. Wczytaj Grę");
                 Console.WriteLine("3. Koniec");
@@ -35,8 +44,8 @@ namespace RPGKonsoleGame
                 if (opcja == "1")
                 {
                     StworzPostac();
-                    
-                    
+
+
                 }
 
                 else if (opcja == "2")
@@ -50,7 +59,7 @@ namespace RPGKonsoleGame
                     Console.WriteLine("Dzięki za grę");
                     return;
                 }
-                
+
                 while (opcja != "5")
                 {
                     MenuGry();
@@ -59,23 +68,24 @@ namespace RPGKonsoleGame
                     if (opcja == "0")
                     {
                         _bohater.PokazPostac();
+
                     }
 
                     else if (opcja == "1")
                     {
                         IdzNaWyprawe();
                     }
-                    else if(opcja == "2")
+                    else if (opcja == "2")
                     {
                         _bohater.Odpocznij();
                     }
-                    else if(opcja == "3")
+                    else if (opcja == "3")
                     {
                         Console.WriteLine("Opcja chwilowo niedostępna");
                     }
                     else if (opcja == "4")
                     {
-                        Console.WriteLine("Opcja chwilowo niedostępna");
+                        Sklep();
                     }
                     _bohater.Przegrana();
                     Console.WriteLine("Naciśnij enter, aby kontynuować");
@@ -96,12 +106,12 @@ namespace RPGKonsoleGame
                 Console.WriteLine("3. Ekwipunek");
                 Console.WriteLine("4. Sklep");
                 Console.WriteLine("5. Koniec");
-                
+
 
             }
 
             //static 
-                int DajWieksza(int liczba1, int liczba2)
+            int DajWieksza(int liczba1, int liczba2)
             {
                 if (liczba1 < liczba2)
                     return liczba2;
@@ -117,25 +127,25 @@ namespace RPGKonsoleGame
                 _bohater = new Bohater(imie);
 
                 _bohater.Imie = Console.ReadLine();
-               // _bohater.Level = 1;
-               // _bohater.MaksymalneZycie = _bohater.PosiadaneZycie = 10;
+                // _bohater.Level = 1;
+                // _bohater.MaksymalneZycie = _bohater.PosiadaneZycie = 10;
             }
 
             //static 
-                void IdzNaWyprawe()
+            void IdzNaWyprawe()
 
             {
                 Console.Clear();
                 Console.WriteLine("Wyruszyłeś na wyprawę");
-               bool WynikWalki = Walka();
+                bool WynikWalki = Walka();
 
-                if(WynikWalki)
+                if (WynikWalki)
                 {
                     BonusyZaZwyciestwo();
 
                 }
-                
-               
+
+
 
             }
             //static
@@ -144,20 +154,20 @@ namespace RPGKonsoleGame
 
             }
 
-            
+
             //static 
-                bool Walka()
+            bool Walka()
             {
-                
+
                 Random losuj = new Random();
-                int ZyciePrzeciwnika = losuj.Next(8,12);
+                int ZyciePrzeciwnika = losuj.Next(8, 12);
 
 
 
-                while (_bohater.PosiadaneZycie > 0) 
-            
+                while (_bohater.PosiadaneZycie > 0)
+
                 {
-                     int obrazeniaZadane = losuj.Next(2, 3);
+                    int obrazeniaZadane = losuj.Next(2, 3);
                     ZyciePrzeciwnika -= obrazeniaZadane;
 
                     if (ZyciePrzeciwnika <= 0)
@@ -169,7 +179,34 @@ namespace RPGKonsoleGame
                 return true;
 
             }
-            
+            //static 
+            void Sklep()
+            {
+                Console.Clear();
+                int licznik = 1;
+
+                foreach (Broń broń in bronie)
+                {
+                    Console.WriteLine(licznik + ". " + broń.Nazwa);
+                    licznik++;
+                }
+
+                /*
+                for (int nrBroni = 0 ; nrBroni < bronie.Count;nrBroni++)
+                {
+                    Console.WriteLine((nrBroni + 1) + ". " + bronie[nrBroni].Nazwa);
+                }
+                */
+
+                Console.WriteLine("Wybierz broń: ");
+                string odczyt = Console.ReadLine();
+                int opcja = int.Parse(odczyt);
+
+                Broń wybranaBron = bronie[opcja - 1];
+                _bohater.KupBron(wybranaBron);
+
+            }
+
         }
     }
 }
