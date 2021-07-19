@@ -9,6 +9,7 @@ namespace RPGKonsoleGame
     class Program
     {
         private static Bohater _bohater;
+        private static List<Broń> bronie;
 
 
         static void Main(string[] args)
@@ -22,10 +23,11 @@ namespace RPGKonsoleGame
                 void StworzBronie()
             {
                 List<Broń> bronie = new List<Broń>();
-                Broń broń = new Broń();
-                broń.Nazwa = "Wrzeszczący kijaszek";
-                broń.Cena = 3;
-                broń.ModyfikatorObrazen = 4;
+                Broń broń = new Broń("Wrzeszczący kijaszek", 3,4);
+                bronie.Add(broń);
+                bronie.Add(new Broń("Magiczny Róg", 10, 6));
+                bronie.Add(new Broń("Badyl", 1, 100));
+
             }
 
             //static 
