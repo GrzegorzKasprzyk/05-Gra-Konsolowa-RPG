@@ -11,6 +11,7 @@ namespace RPGKonsoleGame
         string Nazwa { get; set; }
         int Cena { get; set; }
         int ModyfikatorObrazen { get; set; }
+        bool MozliwoscNoszeniaTarczy { get; }
         int ObliczObrazenia();
 
     }
