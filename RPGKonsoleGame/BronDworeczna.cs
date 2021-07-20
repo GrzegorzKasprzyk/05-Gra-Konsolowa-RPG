@@ -8,13 +8,26 @@ namespace RPGKonsoleGame
 {
     public class BronDworeczna : IBron
     {
-        public string Nazwa { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Cena { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int ModyfikatorObrazen { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Nazwa { get ; set ; }
+        public int Cena { get ; set; }
+        public int ModyfikatorObrazen { get ; set ; }
+        public bool MozliwoscNoszeniaTarczy 
+        { get
+
+            {
+                return false;
+            }
+        }
+        public BronDworeczna(string nazwa, int cena, int modyfikatorObrazen)
+        {
+            Nazwa = nazwa;
+            Cena = cena;
+            ModyfikatorObrazen = modyfikatorObrazen;
+        }
 
         public int ObliczObrazenia()
         {
-            throw new NotImplementedException();
+            return ModyfikatorObrazen * 3;
         }
     }
 }
