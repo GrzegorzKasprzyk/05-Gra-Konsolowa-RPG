@@ -15,7 +15,7 @@ namespace RPGKonsoleGame
         public int Level { get; set; }
         public int PunktyDoswiadczenia { get; set; }
         public int Sakwa { get; set; }
-        public Broń NoszonaBron { get; private set; }
+        public IBron NoszonaBron { get; private set; }
 
         public Bohater(string imie)
         {
