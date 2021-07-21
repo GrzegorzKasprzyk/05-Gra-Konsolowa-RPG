@@ -9,7 +9,7 @@ namespace RPGKonsoleGame
     class Program
     {
         private static Bohater _bohater;
-        private static List<Broń> bronie;
+        private static List<IBron> bronie;
 
 
         static void Main(string[] args)
@@ -22,11 +22,12 @@ namespace RPGKonsoleGame
             //static 
             void StworzBronie()
             {
-                List<Broń> bronie = new List<Broń>();
+                List<IBron> bronie = new List<IBron>();
                 Broń broń = new Broń("Wrzeszczący kijaszek", 3, 4);
                 bronie.Add(broń);
                 bronie.Add(new Broń("Magiczny Róg", 10, 6));
                 bronie.Add(new Broń("Badyl", 1, 100));
+                bronie.Add(new BronDworeczna("Smiercionośna Dwóręczna Łodyga", 15, 4));
 
             }
 
@@ -167,7 +168,8 @@ namespace RPGKonsoleGame
                 while (_bohater.PosiadaneZycie > 0)
 
                 {
-                    int obrazeniaZadane = losuj.Next(2, 3);
+                    int obrazenia = _bohater.NoszonaBron.ObliczObrazenia();
+                    int obrazeniaZadane = losuj.Next(obrazenia - 2, obrazenia + 2);
                     ZyciePrzeciwnika -= obrazeniaZadane;
 
                     if (ZyciePrzeciwnika <= 0)
