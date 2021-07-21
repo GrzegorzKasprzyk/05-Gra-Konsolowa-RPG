@@ -24,7 +24,7 @@ namespace RPGKonsoleGame
             PosiadaneZycie = 10;
             Level = 1;
             PunktyDoswiadczenia = 0;
-            Sakwa = 10;
+            Sakwa = 100;
         }
 
         //static 
@@ -55,13 +55,13 @@ namespace RPGKonsoleGame
                 if(NoszonaBron != null)
                 Console.WriteLine(NoszonaBron.Nazwa + "   obrażenia" + NoszonaBron.ModyfikatorObrazen);
             }
-            public void KupBron(Broń broń)
+            public void KupBron(IBron bron)
             {
-                if(broń.Cena <= Sakwa)
+                if(bron.Cena <= Sakwa)
                 {
-                    Sakwa -= broń.Cena;
-                    NoszonaBron = broń;
-                    Console.WriteLine("Od teraz dzierżysz" + broń.Nazwa);
+                    Sakwa -= bron.Cena;
+                    NoszonaBron = bron;
+                    Console.WriteLine("Od teraz dzierżysz" + bron.Nazwa);
                 }
                 else 
                 {
