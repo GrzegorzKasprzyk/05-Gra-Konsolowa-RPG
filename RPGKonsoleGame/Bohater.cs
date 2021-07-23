@@ -16,6 +16,10 @@ namespace RPGKonsoleGame
         public int PunktyDoswiadczenia { get; set; }
         public int Sakwa { get; set; }
         public IBron NoszonaBron { get; private set; }
+        public Napiersnik NoszonyNapiersnik { get; private set; }
+        public Tarcza NoszonaTarcza { get; private set; }
+
+
 
         public Bohater(string imie)
         {
