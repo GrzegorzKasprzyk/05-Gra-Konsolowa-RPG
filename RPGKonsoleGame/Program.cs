@@ -9,7 +9,8 @@ namespace RPGKonsoleGame
     class Program
     {
         private static Bohater _bohater;
-        private static List<IBron> bronie;
+        private static List<IBron> _bronie;
+        private static List<Zbroja> _zbroje;
 
 
         static void Main(string[] args)
@@ -22,12 +23,28 @@ namespace RPGKonsoleGame
             //static 
             void StworzBronie()
             {
-                List<IBron> bronie = new List<IBron>();
+                _bronie = new List<IBron>();
+                _zbroje = new List<Zbroja>();
+
+                //List<IBron> bronie = new List<IBron>();
                 Broń broń = new Broń("Wrzeszczący kijaszek", 3, 4);
-                bronie.Add(broń);
-                bronie.Add(new Broń("Magiczny Róg", 10, 6));
-                bronie.Add(new Broń("Badyl", 1, 100));
-                bronie.Add(new BronDworeczna("Smiercionośna Dwóręczna Łodyga", 15, 4));
+                _bronie.Add(broń);
+                _bronie.Add(new Broń("Magiczny Róg", 10, 6));
+                _bronie.Add(new Broń("Badyl", 1, 100));
+                _bronie.Add(new BronDworeczna("Smiercionośna Dwóręczna Łodyga", 15, 4));
+                _zbroje.Add(new Tarcza
+                {
+                    Nazwa = "Tarcza Niebios",
+                    Obrona = 10,
+                    PoziomZuzycia = 0,
+
+                });
+                Napiersnik napiersnik = new Napiersnik();
+                napiersnik.Nazwa = "Klata Chwały";
+                napiersnik.Obrona = 15;
+                napiersnik.PoziomZuzycia = 0;
+                _zbroje.Add(napiersnik);
+                
 
             }
 
@@ -193,6 +210,8 @@ namespace RPGKonsoleGame
                     licznik++;
                 }
 
+
+
                 /*
                 for (int nrBroni = 0 ; nrBroni < bronie.Count;nrBroni++)
                 {
@@ -200,12 +219,35 @@ namespace RPGKonsoleGame
                 }
                 */
 
+                foreach(Zbroja zbroja in _zbroje)
+                {
+                    Console.WriteLine(licznik + ". " + zbroja.Nazwa);
+                    licznik++;
+                }
                 Console.WriteLine("Wybierz broń: ");
                 string odczyt = Console.ReadLine();
                 int opcja = int.Parse(odczyt);
 
-                Broń wybranaBron = bronie[opcja - 1];
-                _bohater.KupBron(wybranaBron);
+                if(opcja <= _bronie.Count)
+                {
+                    Broń wybranaBron = bronie[opcja - 1];
+                    _bohater.KupBron(wybranaBron);
+                }
+
+                else
+                {
+                    opcja -= _bronie.Count;
+                    Zbroja wybranaZbroja = _zbroje[opcja - 1];
+                    if(wybranaZbroja is Tarcza)
+                    {
+                        _bohater.NoszonaTarcza = wybranaZbroja as Tarcza;
+                    }
+                    else
+                    {
+                        _bohater.NoszonyNapiersnik = (Napiersnik)wybranaZbroja;
+                    }
+                }
+                
 
             }
 
