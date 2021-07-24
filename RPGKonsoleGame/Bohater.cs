@@ -16,8 +16,8 @@ namespace RPGKonsoleGame
         public int PunktyDoswiadczenia { get; set; }
         public int Sakwa { get; set; }
         public IBron NoszonaBron { get; private set; }
-        public Napiersnik NoszonyNapiersnik { get; private set; }
-        public Tarcza NoszonaTarcza { get; private set; }
+        public Napiersnik NoszonyNapiersnik { get; set; }
+        public Tarcza NoszonaTarcza { get; set; }
 
 
 
@@ -58,6 +58,10 @@ namespace RPGKonsoleGame
                 Console.WriteLine("Sakwa: " + Sakwa + "golda");
                 if(NoszonaBron != null)
                 Console.WriteLine(NoszonaBron.Nazwa + "   obrażenia" + NoszonaBron.ModyfikatorObrazen);
+                if (NoszonaTarcza != null)
+                    Console.WriteLine(NoszonaTarcza.Nazwa);
+                if (NoszonyNapiersnik != null)
+                    Console.WriteLine(NoszonyNapiersnik.Nazwa);
             }
             public void KupBron(IBron bron)
             {
