@@ -1,0 +1,5 @@
+Wrzeszczący kijaszek; 3; 4
+Magiczny Róg; 10; 6
+Badyl; 20; 15
+Ekskalibor; 50; 20
+

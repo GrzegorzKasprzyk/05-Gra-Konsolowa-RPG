@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace RPGKonsoleGame
 {
@@ -30,8 +31,8 @@ namespace RPGKonsoleGame
                 Broń broń = new Broń("Wrzeszczący kijaszek", 3, 4);
                 _bronie.Add(broń);
                 _bronie.Add(new Broń("Magiczny Róg", 10, 6));
-                _bronie.Add(new Broń("Badyl", 1, 100));
-                _bronie.Add(new BronDworeczna("Smiercionośna Dwóręczna Łodyga", 15, 4));
+                _bronie.Add(new Broń("Badyl", 1, 10));
+                _bronie.Add(new BronDworeczna("Śmiercionośna Dwuręczna Łodyga", 15, 4));
                 _zbroje.Add(new Tarcza
                 {
                     Nazwa = "Tarcza Niebios",
