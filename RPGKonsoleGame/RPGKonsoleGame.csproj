@@ -46,6 +46,7 @@
     <Compile Include="Bohater.cs" />
     <Compile Include="BronDworeczna.cs" />
     <Compile Include="Broń.cs" />
+    <Compile Include="Dane.cs" />
     <Compile Include="IBron.cs" />
     <Compile Include="Napiersnik.cs" />
     <Compile Include="Program.cs" />
