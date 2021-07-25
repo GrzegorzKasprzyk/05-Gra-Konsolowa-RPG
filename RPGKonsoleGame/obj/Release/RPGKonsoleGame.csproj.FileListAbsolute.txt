@@ -1,0 +1,2 @@
+C:\Users\grzes\Desktop\Gra-Konsolowa-RPG\RPGKonsoleGame\obj\Release\RPGKonsoleGame.csproj.AssemblyReference.cache
+C:\Users\grzes\Desktop\Gra-Konsolowa-RPG\RPGKonsoleGame\obj\Release\RPGKonsoleGame.csproj.CoreCompileInputs.cache
