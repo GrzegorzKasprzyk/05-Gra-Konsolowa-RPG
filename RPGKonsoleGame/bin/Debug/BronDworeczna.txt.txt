@@ -1,0 +1,4 @@
+Śmiercionośna Dwuręczna Łodyga; 15; 10
+Dwuręczny Miecz; 20; 15
+Trójząb Zeusa; 50; 35
+Sztaba Zagłady; 80; 80
